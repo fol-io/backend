@@ -11,7 +11,34 @@ const userSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'User',
+    required: true
+  },
+  articles: {
+    head: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
+    neck: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
+    torso: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
+    legs: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
+    feet: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
+    misc: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Article'
+    }],
   }
 });
 

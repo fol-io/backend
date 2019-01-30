@@ -16,10 +16,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  outfits: {
+  outfits: [{
     type: Schema.Types.ObjectId,
     ref: 'Outfit'
-  }
+  }]
 });
 
 // eslint-disable-next-line func-names
