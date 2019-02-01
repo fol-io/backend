@@ -14,7 +14,7 @@ router.post('/signup', (req, res) => {
       logUserIn(res, user, 'signup');
     })
     .catch((error) => {
-      res.json({
+      res.status(400).json({
         signup: 'fail',
         error
       });
@@ -28,7 +28,7 @@ router.post('/login', (req, res) => {
       logUserIn(res, user, 'login');
     })
     .catch((error) => {
-      res.json({
+      res.status(400).json({
         login: 'fail',
         error
       });
@@ -38,7 +38,7 @@ router.post('/login', (req, res) => {
 router.post('/getuser', (req, res) => {
   const token = req.body.token;
   controller.getUser(token).then((user) => {
-    res.json({
+    res.status(200).json({
       user,
       token
     });
@@ -56,12 +56,12 @@ function logUserIn(res, user, type) {
     }
   );
   if (type === 'login') {
-    res.json({
+    res.status(200).json({
       login: 'success',
       token
     });
   } else if (type === 'signup') {
-    res.json({
+    res.status(200).json({
       signup: 'success',
       token
     });

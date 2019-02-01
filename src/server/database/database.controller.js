@@ -101,7 +101,7 @@ function update(Model, id, data) {
         if (error) {
           reject(error);
         } else {
-          resolve();
+          resolve(data);
         }
       }
     );
@@ -118,7 +118,7 @@ function del(Model, id) {
         if (error) {
           reject(error);
         } else {
-          resolve();
+          resolve(id);
         }
       }
     );

@@ -18,6 +18,10 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
+  bodyPart: {
+    type: String,
+    required: true
+  },
   outfits: [{
     type: Schema.Types.ObjectId,
     ref: 'Outfit'
