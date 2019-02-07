@@ -1,11 +1,13 @@
+const saferEval = require('safer-eval');
+
 function getOne(Model, id, populates = []) {
   return new Promise((resolve, reject) => {
     if (populates.length > 0) {
       let pops = '';
 
       for (let i = 0; i < populates.length; i += 1) {
-        if (populates[i].length > 10) {
-          reject(`populate string too long: ${populates[i]}`);
+        if (populates[i].length > 20) {
+          reject(`populate string too long, max 20: ${populates[i]}`);
         }
         pops = `${pops}.populate(${populates[i]})`;
       }
@@ -20,7 +22,7 @@ function getOne(Model, id, populates = []) {
                             }
                           });`;
 
-      eval(expression); // eslint-disable-line
+      saferEval(expression); // eslint-disable-line
     } else {
       Model.findById(id, (error, response) => {
         if (error) {

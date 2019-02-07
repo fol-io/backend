@@ -19,6 +19,10 @@ const userSchema = new Schema({
   outfits: [{
     type: Schema.Types.ObjectId,
     ref: 'Outfit'
+  }],
+  wardrobe: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Article'
   }]
 });
 
