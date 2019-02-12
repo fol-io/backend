@@ -14,6 +14,10 @@ app.use(cors());
 // Mount all routes on /api path.
 app.use('/api', routes);
 
+app.get('*', (req, res) => {
+  res.redirect('https://project-fashion.github.io/backend/#/');
+});
+
 // #TODO: Additional non-API routes go here.
 
 module.exports = app;
