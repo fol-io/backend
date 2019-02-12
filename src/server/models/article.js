@@ -9,14 +9,17 @@ const userSchema = new Schema({
   updatedAt: {
     type: Date
   },
+  name: {
+    type: String,
+    required: true
+  },
   user: {
     type: Schema.Types.ObjectId,
     ref: 'User',
     required: true
   },
   imageUrl: {
-    type: String,
-    required: true
+    type: String
   },
   bodyPart: {
     type: String,

@@ -29,6 +29,8 @@ function getUser(token, model = false) {
           } else if (!model) {
             resolve({
               email: resp.email,
+              outfits: resp.outfits,
+              wardrobe: resp.wardrobe,
               _id: resp._id
             });
           } else {
