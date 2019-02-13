@@ -24,13 +24,14 @@ function getUserArticles(token, bodyPart = null) {
 }
 
 // TODO: Add image support
-function newArticle(token, body) {
+function newArticle(token, body, imageUrl) {
   return new Promise((resolve, reject) => {
     auth.getUser(token, true).then((user) => {
       if (user !== null) {
         const article = new Article(body);
 
         article.user = user._id;
+        article.imageUrl = imageUrl;
 
         db.save(article).then(() => {
           const wardrobe = user.wardrobe;
