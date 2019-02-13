@@ -33,7 +33,16 @@ function newArticle(token, body) {
         article.user = user._id;
 
         db.save(article).then(() => {
-          resolve(article);
+          const wardrobe = user.wardrobe;
+          wardrobe.unshift(article._id);
+
+          db.update(auth.UserModel, user._id, {
+            wardrobe
+          }).then(() => {
+            resolve(article);
+          }).catch((error) => {
+            reject(error.message);
+          });
         }).catch((error) => {
           reject(error.message);
         });

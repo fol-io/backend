@@ -86,6 +86,7 @@ function signup(userData) {
 }
 
 module.exports = {
+  UserModel,
   comparePassword,
   getUser,
   login,
