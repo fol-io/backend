@@ -5,3 +5,7 @@ DO NOT MERGE TO MASTER, THIS IS TO BE DONE BY [LucHighwalker](https://github.com
 # Authentication
 
 [Auth](/usage/auth.md ':include')
+
+# Clothing articles
+
+[clothing](/usage/clothing.md ':include')
