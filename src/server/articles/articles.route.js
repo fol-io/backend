@@ -10,7 +10,7 @@ const Upload = require('s3-uploader');
 
 const client = new Upload(config.s3Bucket, {
   aws: {
-    path: 'article/image',
+    path: 'article/',
     region: config.s3Region,
     acl: 'public-read',
     accessKeyId: config.awsAccessKey,
