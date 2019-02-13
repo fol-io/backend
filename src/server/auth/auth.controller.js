@@ -15,27 +15,26 @@ function comparePassword(password, hashedPass) {
   });
 }
 
-function getUser(token, model = false) {
+function getUser(token, model = false, populates = []) {
   return new Promise((resolve, reject) => {
     let decodedToken = null;
     if (token !== undefined && token !== '') {
       decodedToken = jwt.decode(token);
-      UserModel.findOne({
-        _id: decodedToken._id
-      })
-        .exec((err, resp) => {
-          if (err) {
-            reject(err);
-          } else if (!model) {
+      db.getOne(UserModel, decodedToken._id, populates)
+        .then((user) => {
+          if (!model) {
             resolve({
-              email: resp.email,
-              outfits: resp.outfits,
-              wardrobe: resp.wardrobe,
-              _id: resp._id
+              email: user.email,
+              outfits: user.outfits,
+              wardrobe: user.wardrobe,
+              _id: user._id
             });
           } else {
-            resolve(resp);
+            resolve(user);
           }
+        })
+        .catch((error) => {
+          reject(error.message);
         });
     } else {
       resolve(null);

@@ -5,7 +5,7 @@ const Article = require('../models/article');
 
 function getUserArticles(token, bodyPart = null) {
   return new Promise((resolve, reject) => {
-    auth.getUser(token, true).then((user) => {
+    auth.getUser(token, true, ['wardrobe']).then((user) => {
       if (bodyPart === null) {
         resolve(user.wardrobe);
       } else {
